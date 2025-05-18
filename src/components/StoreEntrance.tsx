@@ -15,12 +15,13 @@ const StoreEntrance = () => {
   } = useShopping();
 
   // Simulate the app detecting the store and showing welcome notification
-  const showWelcomeToast = isGeofenceActive && store;
+  // Fix: Only show toast when both geofence is active AND store exists
+  const showWelcomeToast = isGeofenceActive && Boolean(store);
 
   return (
     <div className="space-y-4">
       <NotificationToast 
-        title={`Welcome to ${store?.name}!`}
+        title={`Welcome to ${store?.name || 'Store'}!`}
         description="This store supports A2A payments."
         show={showWelcomeToast}
       />
