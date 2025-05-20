@@ -102,7 +102,7 @@ const Checkout = () => {
               ) : paymentComplete ? (
                 "Payment Approved"
               ) : (
-                `Approve Payment ($${getCartTotal().toFixed(2)})`
+                `Approve Payment (£${getCartTotal().toFixed(2)})`
               )}
             </Button>
           </CardFooter>
