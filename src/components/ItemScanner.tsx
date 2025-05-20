@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { PlusIcon, ScanIcon, CircleDollarSignIcon } from 'lucide-react';
 
 const ItemScanner = () => {
-  const { user, availableItems, addToCart, paymentMethod, setPaymentMethod } = useShopping();
+  const { user, store, availableItems, addToCart, paymentMethod, setPaymentMethod } = useShopping();
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [isScanningMode, setIsScanningMode] = useState(false);
   
@@ -38,27 +38,33 @@ const ItemScanner = () => {
 
   return (
     <div className="space-y-4">
+      {/* Personalized welcome message with discount */}
+      <div className="bg-orange-100 p-4 rounded-md border border-orange-200 mb-4">
+        <h3 className="font-medium">Hello Sarah!</h3>
+        <p className="text-sm">Welcome to {store?.name || 'the store'}. By using AdoptaPay today you have unlocked <span className="font-bold text-orange-600">10% off</span>.</p>
+      </div>
+
       {!selectedItem && !isScanningMode && (
         <div className="flex flex-col items-center justify-center py-8">
           <Button 
             onClick={startScanning}
             size="lg"
             variant="outline"
-            className="h-20 w-20 rounded-full flex items-center justify-center mb-4"
+            className="h-20 w-20 rounded-full flex items-center justify-center mb-4 border-orange-500 text-orange-500 hover:bg-orange-50"
           >
             <ScanIcon className="h-8 w-8" />
           </Button>
-          <p className="text-lg font-medium">Scan an Item</p>
+          <p className="text-lg font-medium">Scan an Item Smart Label</p>
           <p className="text-sm text-muted-foreground mt-1">
-            Point your camera at an item barcode
+            Point your camera at an item smart label
           </p>
         </div>
       )}
       
       {isScanningMode && (
         <div className="flex flex-col items-center justify-center py-12">
-          <div className="w-64 h-64 border-4 border-primary/20 rounded-lg relative flex items-center justify-center mb-4">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-primary animate-pulse-fade"></div>
+          <div className="w-64 h-64 border-4 border-orange-500/20 rounded-lg relative flex items-center justify-center mb-4">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-orange-500 animate-pulse-fade"></div>
           </div>
           <p className="text-lg font-medium">Scanning...</p>
         </div>
@@ -83,12 +89,7 @@ const ItemScanner = () => {
             
             <div className="bg-muted/50 rounded-md p-3 flex justify-between items-center">
               <span className="font-medium">Price:</span>
-              <span className="text-lg font-semibold">${selectedItem.price.toFixed(2)}</span>
-            </div>
-            
-            <div className="flex items-center justify-between">
-              <span className="font-medium">Available Balance:</span>
-              <span className="text-lg">${user?.balance.toFixed(2) || '0.00'}</span>
+              <span className="text-lg font-semibold">£{selectedItem.price.toFixed(2)}</span>
             </div>
             
             <div className="flex items-center justify-between">
@@ -101,7 +102,7 @@ const ItemScanner = () => {
             
             <div className="space-y-2">
               <div className="flex items-center">
-                <CircleDollarSignIcon className="h-5 w-5 mr-2" />
+                <CircleDollarSignIcon className="h-5 w-5 mr-2 text-orange-500" />
                 <span className="font-medium">Payment Method:</span>
               </div>
               
@@ -131,7 +132,7 @@ const ItemScanner = () => {
           <CardFooter>
             <Button 
               onClick={handleAddToCart} 
-              className="w-full"
+              className="w-full bg-orange-500 hover:bg-orange-600"
               disabled={!hasSufficientFunds()}
             >
               <PlusIcon className="mr-2 h-4 w-4" />

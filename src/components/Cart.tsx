@@ -19,6 +19,10 @@ const Cart = () => {
     );
   }
   
+  const subtotal = getCartTotal();
+  const discount = subtotal * 0.1; // 10% discount
+  const total = subtotal - discount;
+  
   return (
     <Card className="bg-card shadow-md">
       <CardHeader>
@@ -39,7 +43,7 @@ const Cart = () => {
             </div>
             <div className="flex items-center space-x-4">
               <div className="font-medium">
-                ${(item.price * item.quantity).toFixed(2)}
+                £{(item.price * item.quantity).toFixed(2)}
               </div>
               <Button
                 size="icon"
@@ -55,9 +59,19 @@ const Cart = () => {
       </CardContent>
       
       <CardFooter className="flex flex-col space-y-3">
-        <div className="flex w-full justify-between py-2 border-t border-border">
-          <span className="font-bold">Total:</span>
-          <span className="font-bold">${getCartTotal().toFixed(2)}</span>
+        <div className="flex w-full flex-col space-y-1 py-2 border-t border-border">
+          <div className="flex justify-between">
+            <span>Subtotal:</span>
+            <span>£{subtotal.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between text-orange-600 font-medium">
+            <span>Discount (10%):</span>
+            <span>-£{discount.toFixed(2)}</span>
+          </div>
+          <div className="flex justify-between font-bold mt-1 pt-1 border-t border-border">
+            <span>Total:</span>
+            <span>£{total.toFixed(2)}</span>
+          </div>
         </div>
         
         <Button 

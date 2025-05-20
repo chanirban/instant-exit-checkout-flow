@@ -23,6 +23,10 @@ const Receipt = () => {
   const today = new Date();
   const receiptNumber = `REC-${Math.floor(Math.random() * 1000000)}`;
   
+  const subtotal = getCartTotal();
+  const discount = subtotal * 0.1; // 10% discount
+  const total = subtotal - discount;
+  
   return (
     <div className="space-y-4">
       <div className="flex justify-center">
@@ -35,7 +39,7 @@ const Receipt = () => {
       <Card className="bg-card shadow-md">
         <CardHeader className="text-center border-b border-border">
           <div className="flex justify-center mb-2">
-            <TicketIcon className="h-8 w-8" />
+            <TicketIcon className="h-8 w-8 text-orange-500" />
           </div>
           <CardTitle>Digital Receipt</CardTitle>
           <p className="text-sm text-muted-foreground">
@@ -55,7 +59,7 @@ const Receipt = () => {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Payment Method:</span>
-              <span>{paymentMethod}</span>
+              <span>AdoptaPay ({paymentMethod})</span>
             </div>
           </div>
           
@@ -70,7 +74,7 @@ const Receipt = () => {
                 <span>
                   {item.name} x{item.quantity}
                 </span>
-                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                <span>£{(item.price * item.quantity).toFixed(2)}</span>
               </div>
             ))}
           </div>
@@ -80,15 +84,15 @@ const Receipt = () => {
           <div className="space-y-1">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Subtotal:</span>
-              <span>${getCartTotal().toFixed(2)}</span>
+              <span>£{subtotal.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Tax:</span>
-              <span>${(getCartTotal() * 0.07).toFixed(2)}</span>
+            <div className="flex justify-between text-orange-600">
+              <span className="font-medium">AdoptaPay Discount (10%):</span>
+              <span>-£{discount.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between font-medium text-base">
+            <div className="flex justify-between font-medium text-base pt-1 mt-1 border-t border-border">
               <span>Total:</span>
-              <span>${(getCartTotal() * 1.07).toFixed(2)}</span>
+              <span>£{total.toFixed(2)}</span>
             </div>
           </div>
           
@@ -103,7 +107,7 @@ const Receipt = () => {
         </CardContent>
         
         <CardFooter className="justify-center border-t border-border pt-4">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" className="text-orange-600 hover:text-orange-700 hover:bg-orange-50">
             Download Receipt
           </Button>
         </CardFooter>

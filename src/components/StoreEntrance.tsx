@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import StatusBadge from '@/components/StatusBadge';
 import { useShopping } from '@/contexts/ShoppingContext';
@@ -22,7 +22,7 @@ const StoreEntrance = () => {
     <div className="space-y-4">
       <NotificationToast 
         title={`Welcome to ${store?.name || 'Store'}!`}
-        description="This store supports A2A payments."
+        description="This store supports AdoptaPay payments."
         show={showWelcomeToast}
       />
       
@@ -30,7 +30,7 @@ const StoreEntrance = () => {
         <Card className="bg-card shadow-md">
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center">
-              <MapPinIcon className="mr-2 h-5 w-5 text-geofence" />
+              <MapPinIcon className="mr-2 h-5 w-5 text-orange-500" />
               {store?.name || 'No Store Detected'}
             </CardTitle>
             {store && (
@@ -55,7 +55,7 @@ const StoreEntrance = () => {
             </div>
             
             <div className="flex items-center justify-between">
-              <span className="text-sm">A2A Payment:</span>
+              <span className="text-sm">AdoptaPay Payment:</span>
               <StatusBadge 
                 status={isA2AAvailable} 
                 label={isA2AAvailable ? "Available" : "Not Available"} 

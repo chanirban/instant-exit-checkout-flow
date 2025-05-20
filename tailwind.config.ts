@@ -68,9 +68,21 @@ export default {
 					foreground: 'hsl(0, 0%, 100%)'
 				},
 				geofence: {
-					DEFAULT: 'hsl(220, 100%, 50%)',
+					DEFAULT: 'hsl(24, 100%, 50%)',  // Updated to orange
 					foreground: 'hsl(0, 0%, 100%)'
-				}
+				},
+				orange: {
+					'50': '#fff8f1',
+					'100': '#feecdc',
+					'200': '#fcd9bd',
+					'300': '#fdba8c',
+					'400': '#ff8a4c',
+					'500': '#ff5a1f',  // Main PwC orange color
+					'600': '#d03801',
+					'700': '#b43403',
+					'800': '#8a2c0d',
+					'900': '#73230d',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
