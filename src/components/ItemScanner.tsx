@@ -6,7 +6,7 @@ import { Item, useShopping } from '@/contexts/ShoppingContext';
 import StatusBadge from './StatusBadge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { PlusIcon, ScanIcon, CircleDollarSignIcon } from 'lucide-react';
+import { PlusIcon, ScanIcon, PoundSterlingIcon } from 'lucide-react';
 
 const ItemScanner = () => {
   const { user, store, availableItems, addToCart, paymentMethod, setPaymentMethod } = useShopping();
@@ -102,7 +102,7 @@ const ItemScanner = () => {
             
             <div className="space-y-2">
               <div className="flex items-center">
-                <CircleDollarSignIcon className="h-5 w-5 mr-2 text-orange-500" />
+                <PoundSterlingIcon className="h-5 w-5 mr-2 text-orange-500" />
                 <span className="font-medium">Payment Method:</span>
               </div>
               
