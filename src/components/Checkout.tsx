@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useShopping } from '@/contexts/ShoppingContext';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import { CircleDollarSignIcon, ShieldCheckIcon } from 'lucide-react';
+import { PoundSterlingIcon, ShieldCheckIcon } from 'lucide-react';
 import Cart from './Cart';
 
 const Checkout = () => {
@@ -68,7 +68,7 @@ const Checkout = () => {
                     Direct account-to-account transfer (Recommended)
                   </p>
                 </div>
-                <CircleDollarSignIcon className="h-5 w-5 text-primary" />
+                <PoundSterlingIcon className="h-5 w-5 text-primary" />
               </div>
               
               <div className="flex items-center space-x-2 border border-border rounded-md p-3">
