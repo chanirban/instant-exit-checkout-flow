@@ -31,6 +31,11 @@ const Checkout = () => {
       setIsProcessing(false);
     }, 2000);
   };
+
+  // Calculate the total after discount
+  const subtotal = getCartTotal();
+  const discount = subtotal * 0.1; // 10% discount
+  const total = subtotal - discount;
   
   return (
     <div className="space-y-4">
@@ -102,7 +107,7 @@ const Checkout = () => {
               ) : paymentComplete ? (
                 "Payment Approved"
               ) : (
-                `Approve Payment (£${getCartTotal().toFixed(2)})`
+                `Approve Payment (£${total.toFixed(2)})`
               )}
             </Button>
           </CardFooter>
