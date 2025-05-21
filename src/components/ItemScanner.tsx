@@ -39,18 +39,18 @@ const ItemScanner = () => {
   return (
     <div className="space-y-4">
       {/* Personalized welcome message with discount */}
-      <div className="bg-orange-100 p-4 rounded-md border border-orange-200 mb-4">
+      <div className="bg-white/90 backdrop-blur-sm p-4 rounded-md border border-maroon-200 mb-4 content-container">
         <h3 className="font-medium">Hello Sarah!</h3>
-        <p className="text-sm">Welcome to {store?.name || 'the store'}. By using AdoptaPay today you have unlocked <span className="font-bold text-orange-600">10% off</span>.</p>
+        <p className="text-sm">Welcome to {store?.name || 'the store'}. By using AdoptaPay today you have unlocked <span className="font-bold text-maroon-600">10% off</span>.</p>
       </div>
 
       {!selectedItem && !isScanningMode && (
-        <div className="flex flex-col items-center justify-center py-8">
+        <div className="flex flex-col items-center justify-center py-8 bg-white/90 backdrop-blur-sm rounded-lg content-container">
           <Button 
             onClick={startScanning}
             size="lg"
             variant="outline"
-            className="h-20 w-20 rounded-full flex items-center justify-center mb-4 border-orange-500 text-orange-500 hover:bg-orange-50"
+            className="h-20 w-20 rounded-full flex items-center justify-center mb-4 border-maroon-500 text-maroon-500 hover:bg-maroon-50"
           >
             <ScanIcon className="h-8 w-8" />
           </Button>
@@ -62,16 +62,16 @@ const ItemScanner = () => {
       )}
       
       {isScanningMode && (
-        <div className="flex flex-col items-center justify-center py-12">
-          <div className="w-64 h-64 border-4 border-orange-500/20 rounded-lg relative flex items-center justify-center mb-4">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-orange-500 animate-pulse-fade"></div>
+        <div className="flex flex-col items-center justify-center py-12 bg-white/90 backdrop-blur-sm rounded-lg content-container">
+          <div className="w-64 h-64 border-4 border-maroon-500/20 rounded-lg relative flex items-center justify-center mb-4">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-maroon-500 animate-pulse-fade"></div>
           </div>
           <p className="text-lg font-medium">Scanning...</p>
         </div>
       )}
       
       {selectedItem && (
-        <Card className="bg-card shadow-md">
+        <Card className="bg-card shadow-md content-container">
           <CardHeader>
             <CardTitle>{selectedItem.name}</CardTitle>
           </CardHeader>
@@ -102,7 +102,7 @@ const ItemScanner = () => {
             
             <div className="space-y-2">
               <div className="flex items-center">
-                <PoundSterlingIcon className="h-5 w-5 mr-2 text-orange-500" />
+                <PoundSterlingIcon className="h-5 w-5 mr-2 text-maroon-500" />
                 <span className="font-medium">Payment Method:</span>
               </div>
               
@@ -132,7 +132,7 @@ const ItemScanner = () => {
           <CardFooter>
             <Button 
               onClick={handleAddToCart} 
-              className="w-full bg-orange-500 hover:bg-orange-600"
+              className="w-full bg-maroon-500 hover:bg-maroon-600"
               disabled={!hasSufficientFunds()}
             >
               <PlusIcon className="mr-2 h-4 w-4" />

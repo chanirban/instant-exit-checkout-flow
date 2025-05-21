@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 217 91% 60%;
+    --primary: 357 67% 38%;  /* Changed from blue to #a32020 */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -46,7 +46,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217 91% 60%;
+    --primary: 357 67% 38%;  /* Changed from blue to #a32020 */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -73,6 +73,10 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: url('/lovable-uploads/6b25547c-ade8-4d82-8f72-d91bc2005afe.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
 }
 
@@ -82,5 +86,26 @@
   }
   .status-badge-success {
     @apply bg-success/10 text-success;
+  }
+  
+  /* Add a class for semi-transparent content containers */
+  .content-container {
+    @apply bg-white/90 backdrop-blur-sm rounded-lg shadow-md;
+  }
+}
+
+/* Add animation for scanning effect */
+@layer utilities {
+  @keyframes pulse-fade {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .animate-pulse-fade {
+    animation: pulse-fade 2s ease-in-out infinite;
   }
 }

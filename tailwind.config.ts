@@ -68,8 +68,20 @@ export default {
 					foreground: 'hsl(0, 0%, 100%)'
 				},
 				geofence: {
-					DEFAULT: 'hsl(24, 100%, 50%)',  // Updated to orange
+					DEFAULT: 'hsl(357, 67%, 38%)',  // Changed to match our new theme color
 					foreground: 'hsl(0, 0%, 100%)'
+				},
+				maroon: {
+					'50': '#fdf2f2',
+					'100': '#f9e6e6',
+					'200': '#f5c7c7',
+					'300': '#e79999',
+					'400': '#d45e5e',
+					'500': '#a32020',  // Main theme color
+					'600': '#8a1c1c',
+					'700': '#761919',
+					'800': '#621818',
+					'900': '#521818',
 				},
 				orange: {
 					'50': '#fff8f1',
@@ -77,7 +89,7 @@ export default {
 					'200': '#fcd9bd',
 					'300': '#fdba8c',
 					'400': '#ff8a4c',
-					'500': '#ff5a1f',  // Main PwC orange color
+					'500': '#ff5a1f',
 					'600': '#d03801',
 					'700': '#b43403',
 					'800': '#8a2c0d',
